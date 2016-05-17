@@ -1425,7 +1425,7 @@ class Server(object):
             errors.append("    GTID is not enabled.")
         if not self.check_version_compat(5, 6, 9):
             errors.append("    Server version must be 5.6.9 or greater.")
-        res = self.exec_query("SHOW VARIABLES LIKE 'gtid_executed'")
+        res = self.exec_query("SHOW GLOBAL VARIABLES LIKE 'gtid_executed'")
         if res == [] or not res[0][0] == "gtid_executed":
             errors.append("    Missing gtid_executed system variable.")
         if errors:
